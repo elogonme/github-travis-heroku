@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- stable
+npm: true
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: {PUT_YOUR_OWN_API_KEY_HERE}
+  app: tranquil-atoll-64381
+  on:
+    repo: eapostol/sample-travis-heroku-repo
