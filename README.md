@@ -110,7 +110,11 @@ Confirm that you can
 
 ### Setup Travis Account and Associate it with your Github Repository
 
-1. [EDIT] Navigate to [https://www.travis-ci.com](https://www.travis-ci.com) (formerly [https://travis-ci.org](https://travis-ci.org) ) and create an account on Travis, associating your *github account* associated with your repository with your Travis account.
+1. (edit) Navigate to
+   [https://www.travis-ci.com](https://www.travis-ci.com) (formerly
+   [https://travis-ci.org](https://travis-ci.org) ) and create an
+   account on Travis, associating your *github account* associated with
+   your repository with your Travis account.
 2. You can automatically associate *all your existing (and future) github repositories* with Travis (that makes it easy) or select repositories to be managed with Travis. Up to you.
 
 ### Install the Github Plugin for Travis
@@ -284,6 +288,9 @@ the .travis.yml sample file
 
 ```
 language: node_js
+branches:
+  only:
+  - main
 node_js:
 - stable
 npm: true
@@ -293,10 +300,12 @@ cache:
 deploy:
   provider: heroku
   api_key:
-    secure: {PUT_YOUR_OWN_API_KEY_HERE}
-  app: {the name of your deployed heroku app}
+    secure: {your Heroku API key here. can be created with travis encrypt $(heroku auth:token) --add deploy.api_key --pro }
+  app: {the name of your heroku app}
   on:
-    repo: {your github profile name/name of repo here}
+    repo: {github account}/{name of repo}
+    branch: main
+  skip_cleanup: 'true'
 ```
 
 The language option can be whatever language your app is running in and the "node_js": "stable" indicates Travis should use a stable version of node as it builds your app.
@@ -326,14 +335,15 @@ Ensure that you have created a github token associated with your account. Follow
 5. If you have protected your main/master branch, go back to your develop branch, make a change, commit and push that change. Otherwise make a code change while in main/master that will by default be successful to test (i.e. add a comment in code, add, commit and push your change to main/master).
 6. Run `npm test` and make any changes or corrections to the syntax as ESLint will inform you. As ane example, in the screen below, line 15, column 3 has a warning. it's a `console.log()` statement. use the [ESlint API documentation](https://eslint.org/docs/2.13.1/user-guide/configuring#disabling-rules-with-inline-comments) to determine how to either accept or disable console.log() from being checked.
 
-![image](./images/Screen Shot 2021-01-24 at 9.09.53 AM.png)
+![Screen Shot 2021-01-24 at 9.09.53 AM.png](images/Screen%20Shot%202021-01-24%20at%209.09.53%20AM.png)
 
 Add, commit, and push your changes as needed.
 
 7. If you cannot merge your branch's changes directly (i.e. you are in develop or another branch), use the pull request process to do code reviews and accept your change from your develop branch to the main / master branch.
 8. Also note the changes to the Gihub Pull Request process if you need to merge your develop branch into main/master/. You may see that Travis is enabled to generate a build and run tests as it is being approved during a pull request.
 
-![Github showing Travis running during the pull request](./images/Screen Shot 2021-01-24 at 9.01.56 AM.png)
+![Github showing Travis running during the pull request](./images/Screen
+Shot 2021-01-24 at 9.01.56 AM.png)
 
 
 The image above shows Github running Travis during the pull request.
@@ -358,6 +368,15 @@ This is the view from the Travis Task Runner in the dashboard. It noted the same
 
 CONCLUSION: When future commits and are pushed and approved, merging to main/master, then Travis takes over and runs the tests, creates the build, and deploys the site to Heroku. If tests fail on the way, you can explore the output either in Github or Travis, and make changes, and add / commit / push / create a pull request / merge and the deployment is done automatically.
 
+
+### Troubleshooting Tips:
+
+* The command `travis encrypt $(heroku auth:token) --add deploy.api_key
+  --pro` will recreate your heroku token embedded inside the .travis.yml
+  file assuming (1) your build is being monitored on travis-ci.com , (2)
+  you have logged in and authenticated to Heroku via the Heroku CLI and
+  (3) you are logged into travis via the Travis CLI. Just enter it into
+  the terminal.
 
 
 
