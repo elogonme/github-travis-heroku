@@ -4,7 +4,7 @@ module.exports = (app) => {
     // eslint-disable-next-line no-console
     console.log('value of req = \n', req);
 
-    res.send('Testing CI with Travis 2021 Edition ');
+    res.send('Testing CI with Travis 2021 Edition test 03');
   };
   app.get('/', responseFn);
 };
