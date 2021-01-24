@@ -68,7 +68,7 @@ You will ultimately implement these steps to automate both building and unit tes
 
 which installs the following from package.json
 
-```  
+```
   "dependencies": {
     "chai": "^4.2.0",
     "dotenv": "^8.2.0",
@@ -166,7 +166,7 @@ or (if you need admin permissions to install - you will know you need admin perm
 
 then `exit` if there are no errors.
 
- or if you have [Homebrew](https://brew.sh/) installed it may be easier to install Travis CLI with Homebrew `brew install travis`. 
+ or if you have [Homebrew](https://brew.sh/) installed it may be easier to install Travis CLI with Homebrew `brew install travis`.
 
 Alternatively follow the instructions at the link above ( [https://github.com/travis-ci/travis.rb#installation](https://github.com/travis-ci/travis.rb#installation) ) . Note you may need to be `sudo` or have administrative privileges.
 
@@ -193,7 +193,7 @@ NOT AVAILABLE" at https://guides.rubygems.org/faqs/
 
 For Windows Users:
 
-when using the Ruby Installer, if asked for checking 'Add Ruby 
+when using the Ruby Installer, if asked for checking 'Add Ruby
 executables to your path' then CHECK THAT OPTION. in fact, check all
 the options (Install TCL/TK Support and associate .rb and .rbw files with the the ruby install)
 
@@ -202,7 +202,7 @@ _administrator_ for your machine, and additionally _launch your terminal or git 
 shell_ as an administrator.
 
 additional sources:
-* https://stackify.com/install-ruby-on-windows-everything-you-need-to-get-going/
+* [https://stackify.com/install-ruby-on-windows-everything-you-need-to-get-going/](https://stackify.com/install-ruby-on-windows-everything-you-need-to-get-going/)
 
 
 
@@ -217,11 +217,11 @@ It should return the version number.
 
 ### Configuring and Testing ESLint to Explore Syntax Checing Tests
 
-ESlint will perform your Syntax tests. If you are using this sample repository, then ESlint is configured for your project after `npm install` , and it contains a sample unit test. 
+ESlint will perform your Syntax tests. If you are using this sample repository, then ESlint is configured for your project after `npm install` , and it contains a sample unit test.
 
-If you are applying it to your own project, then you will have to add the dev dependencies to your project as seen below. (in package.json) 
+If you are applying it to your own project, then you will have to add the dev dependencies to your project as seen below. (in package.json)
 
-```  
+```
 "devDependencies": {
     "eslint": "^7.18.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -231,7 +231,7 @@ If you are applying it to your own project, then you will have to add the dev de
 
 and create your own unit tests (the sample code uses [Mocha](https://mochajs.org) and [Chai](https://www.chaijs.com), but you can use a different assertion library like [Jasmine](https://jasmine.github.io).)
 
-Install Mocha and Eslint globally to make it available at the terminal 
+Install Mocha and Eslint globally to make it available at the terminal
 
 ```
 npm install -g mocha && npm install -g eslint
@@ -239,7 +239,7 @@ npm install -g mocha && npm install -g eslint
 
 If you are using the sample project, then there is a sample .eslintignore and .eslintrc.json for you. the .eslintignore tells eslint what files _not to syntax check_ and .eslintrc.json informs the linter what rules to follow (the air bnb rules, and a specific ecmascript version).
 
-If you want to recreate the files, run
+If you want to recreate the ESLint related files, run
 
 ```
 eslint --init
@@ -263,19 +263,19 @@ Note in our sample package.json the following `test` key
 
 if you type in `npm test` in the root directory of your project folder, it should run an eslint syntax check against server.js and then run a fake test based on the test code created in index-spec.js
 
-Note what ESLint returns and make any syntax corrections as needed when you run `npm test` 
+Note what ESLint returns and make any syntax corrections as needed when you run `npm test`
 
 
 ### Enabling Continuous Integration
 
-You  create a new file called _.travis.yml_ file, which instructs Travis on the build process. The sample project with this repo already has a sample _.travis.yml_ file you could use.  
+You  create a new file called _.travis.yml_ file, which instructs Travis on the build process. The sample project with this repo already has a sample _.travis.yml_ file you could use.
 
 Be aware that the yaml files are _space sensitive_. Improper indentation may result in the yaml file not reading properly. You can look up online yaml validator and test your yaml file to ensure its spaces are set up correctly.
 
-If you use the sample .travis.yml file provided, you will need to adjust 
+If you use the sample .travis.yml file provided, you will need to adjust
 
-* The heroku API key, 
-* The name of the app (that is deployed on heroku, which you should have copied above), and 
+* The heroku API key,
+* The name of the app (that is deployed on heroku, which you should have copied above), and
 * The name of the repo that is associated for travis deployment.
 
 As we configure the .yml file with travis CLI, your sample file will be overwritten and updated with the correct values.
@@ -299,9 +299,9 @@ deploy:
     repo: {your github profile name/name of repo here}
 ```
 
-The language option can be whatever language your app is running in and the "node_js": "stable" indicates Travis should use a stable version of node as it builds your app. 
+The language option can be whatever language your app is running in and the "node_js": "stable" indicates Travis should use a stable version of node as it builds your app.
 
-You can also cache your **node_modules** directory on Travis to avoid installing all dependencies every time a build is triggered 
+You can also cache your **node_modules** directory on Travis to avoid installing all dependencies every time a build is triggered
 and have Travis tell Node/NPM to updates packages that have newer versions when deploying.
 
 #### Configure Github, Heroku and Travis to work together
@@ -316,14 +316,49 @@ Ensure that you have created a github token associated with your account. Follow
 
 1. Return to your main or master branch for your repository if you are not there already.
 2. Confirm you are logged into Heroku with `heroku login`
-3. Now user the travis CLI to login into travis using `travis login --com --github-token {token key here}` (note it used to be `travis login --org`). You now require a github token to login with.
-4. After you have logged in with travis, type `travis setup heroku` (or `travis setup heroku --force` if you wish to update the sample .travis.yml file that is part of the sample repo and replace it with updated settings)
-5. If you have protected your main/mater branch, go back to your develop branch, make a change, commit and push that change. Otherwise make a code change that will by default be successful to test (i.e. add a comment in code, add, commit and push your change to main/master)
-6. If you cannot merge your branch's changes directly, use the pull request process to do code reviews and accept your change to your develop branch. 
-7. Also note the changes to the Gihub Pull Request process if you need to merge your develop branch into main/master/. You may see that Travis is enabled to generate a build and run tests as it is being approved during a pull request.
+3. Now user the travis CLI to login into Travis using `travis login
+   --com --github-token {token key here}` (note it used to be `travis
+   login --org`). You now require a github token to login with.
+4. After you have logged in with Travis, type `travis setup heroku` (or
+   `travis setup heroku --force` if you wish to update the sample
+   .travis.yml file that is part of the sample repo and replace it with
+   updated settings)
+5. If you have protected your main/master branch, go back to your develop branch, make a change, commit and push that change. Otherwise make a code change while in main/master that will by default be successful to test (i.e. add a comment in code, add, commit and push your change to main/master).
+6. Run `npm test` and make any changes or corrections to the syntax as ESLint will inform you. As ane example, in the screen below, line 15, column 3 has a warning. it's a `console.log()` statement. use the [ESlint API documentation](https://eslint.org/docs/2.13.1/user-guide/configuring#disabling-rules-with-inline-comments) to determine how to either accept or disable console.log() from being checked.
+
+![image](./images/Screen Shot 2021-01-24 at 9.09.53 AM.png)
+
+Add, commit, and push your changes as needed.
+
+7. If you cannot merge your branch's changes directly (i.e. you are in develop or another branch), use the pull request process to do code reviews and accept your change from your develop branch to the main / master branch.
+8. Also note the changes to the Gihub Pull Request process if you need to merge your develop branch into main/master/. You may see that Travis is enabled to generate a build and run tests as it is being approved during a pull request.
+
+![Github showing Travis running during the pull request](./images/Screen Shot 2021-01-24 at 9.01.56 AM.png)
 
 
-8. 
+The image above shows Github running Travis during the pull request.
+
+![Github showing Travis running during the pull request](./images/Screen Shot 2021-01-24 at 9.02.35 AM.png)
+
+The image above shows the information that is revealed when you click on 'details'. It just indicates that you can review the information of the build process from Github itself _in addition to_ looking at the Travis Dashboard.
+
+
+At the same time, make sure you have your Travis dashboard displayed to show the status of the build and investigate the _task runners_ that are being executed.
+
+
+![This is the view from the Travis Task Runner in the dashboard](./images/Screen Shot 2021-01-24 at 9.21.29 AM.png)
+
+
+![This is the view from the Travis Task Runner in the dashboard](./images/Screen Shot 2021-01-24 at 9.03.22 AM.png)
+
+This is the view from the Travis Task Runner in the dashboard. It noted the same warning in the previous image. You can fix it in a subequent add, commit and push cycle.
+
+9. At This point, if Travis is reporting 'success' you should be able to visit your deployed website on Heroku and see any updated content (of course, you won't see any console.log statements from nodejs, but if you changed some visual content it would be reflected)
+
+
+CONCLUSION: When future commits and are pushed and approved, merging to main/master, then Travis takes over and runs the tests, creates the build, and deploys the site to Heroku. If tests fail on the way, you can explore the output either in Github or Travis, and make changes, and add / commit / push / create a pull request / merge and the deployment is done automatically.
+
+
 
 
 
