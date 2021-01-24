@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- stable
+npm: true
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: {PUT_YOUR_OWN_API_KEY_HERE}
+  app: {YOUR_HEROKU_APP_NAME_HERE}
+  on:
+    repo: {YOUR_GITHUB_REPO_HERE}

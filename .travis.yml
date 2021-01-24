@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+- stable
+npm: true
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: 7nZDRgnKf76rMBI/rEnU24vH6LCLyGSXKmtz4wkRSrN2rrH6k/FEsQqPC6cK/qMBqFUvWegR3cu4F6IRnkUtQJElCIOw/w3bkscUVqv40bfWRHWaL5wL0OuUtwS9q7WsnYlJ+pnWE03sgVSr1CoZTxs8KYPJONFevS99mB5/mCVeSfOpijnpDd259t1LgWF5Q7SYPWka8JCiexmgb71cPUOUDIQnzzQNoWfA6SV0/jW5mCAFgeaJBOnduo+lwB/wBbOtBF/xAjh7veqbrvn5XgM1u2QqQFx7qjRgkVJTTKxSq1TaLbuJmPn0PBnng1Ei3TKUyqdSADoI8qVMZfPHS0BeRuZd8oOw06CG3smfI2fC3YeyKG/L86dFEwBnwmkMyb+bldXukE6kOvIeK2Y9/u0LkrjBJQOqXTd8J1uMnYG7bLsVm74eOVnbXqDqHQol2vR0DSBaOUDslA2Gid0R/TZM/gheNcuELz5yWj+7kGB/smFHEA5FaeN2pMwM/wsjE0LWAJGoztQwJLZmxqgTrofj+Jevxp067HvkhttOatEvkFYoCVkp9oNB2zHPldGy5k3qUb2JgQRUyKyhndlzyE5Y5Hq3azt992MTSen+SQm5VfvYsmlrzUjCh9GwF5kMy8VXu1eTWQPzOSOby5kdkuPCXjpw5XxOA71CzGc+tZQ=
+  app: tranquil-everglades-14225
+  on:
+    repo: eapostol/github-travis-heroku
+  skip_cleanup: 'true'
