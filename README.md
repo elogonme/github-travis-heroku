@@ -293,9 +293,14 @@ Before you start:
 
 Ensure that you have created a github token associated with your account. Follow the directions here if you have not made one before: [https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token). You can call it "Travis Token for Github" . It allows Travis to access your Github account from the terminal. For Permissions, You can check off most of the settings except delete repo, user related management, and enterprise repo management options.
 
-1. Confirm you are logged into Heroku with `heroku login`
-2. Now user the travis CLI to login into travis using `travis login --com --github-token {token key here}` (note it used to be `travis login --org`). You now require a github token to login with.
-3. After you have logged in with travis, type `travis setup heroku`
+
+1. Return to your main or master branch for your repository if you are not there already.
+2. Confirm you are logged into Heroku with `heroku login`
+3. Now user the travis CLI to login into travis using `travis login --com --github-token {token key here}` (note it used to be `travis login --org`). You now require a github token to login with.
+4. After you have logged in with travis, type `travis setup heroku` (or `travis setup heroku --force` if you wish to update the sample .travis.yml file that is part of the sample repo)
+5. go back to your develop branch, make a change, commit and push that change.
+6. if you cannot merge your branch's changes directly, use the pull request process to accept your change to develop.
+7. 
 
 
 

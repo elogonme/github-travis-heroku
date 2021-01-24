@@ -11,8 +11,8 @@ const PORT = process.env.PORT || 8080;
 require('./controller/api-routes')(app);
 
 const server = app.listen(PORT, () => {
-    // you will need to fix this line and the line below once you run the eslint test
-    console.log('app running on port ', PORT);
+  // you will need to fix this line and the line below once you run the eslint test
+  console.log('app running on port ', PORT);
 });
 
 // eslint-disable-next-line no-console
