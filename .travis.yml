@@ -15,5 +15,4 @@ deploy:
   app: tranquil-everglades-14225
   on:
     repo: eapostol/github-travis-heroku
-    branch: main
   skip_cleanup: 'true'
