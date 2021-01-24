@@ -1,20 +1,19 @@
 language: node_js
 branches:
   only:
-    - main
+  - main
 node_js:
-  - stable
+- stable
 npm: true
 cache:
   directories:
-    - node_modules
+  - node_modules
 deploy:
   provider: heroku
   api_key:
-    secure: DefwlJp55qkS+kDj90dhO80unnJbpjDdnklZBcD7YZr9NE0tZBxvsdos+bh/uI7G3wYcT+SC5rrDRybb/mVUpItUFQQ7sss1bVYrKPsLAZqCwB5fWU85fg19B3IEE8sANI2K3gsvyiD0mTub2E9ZOF4FsFmbbdeL1PMJFUm1dAEg2iXS5Zr1l36pEaNgSXCPGbY5LIeqKjVCavd1LsRJxMFYtYnmFZuzCEluSEtklHLMdHwt2D68s3sERS/N4uRYZ7ACLFcp6kU33oSMiP072JERMnfZkFhTIiEnilCrtm9wm1m6Ep0+WrgNXYsm2k8BJ68M8f7AwwyOAbf9f4jdD9SSKXIUs7eRH0GehPCwRvb4PQLXRuV8yM0kHmAJmYg3aqKdkH7PIYG3lZzcg176thwmUlz5UdOE4kcWng5DJR5MJABa19ReE8PZQNEvfnILMdQpLIFsvfaYsYLfvA99lDWnKoqJI8VxvUzyrDM5ItK//lk3DssvBUcTejtKsfucNm389IpcugC+YFHxZ7iHrnyaxhuUuH6+qdhDpp7HV3fLRby7sPxrZl7I7SM8bVxUh60nSx+DiAvk+c8s6/kEvtXVBKrLrtP/Px3jn7Fe/XndqmGc8wn0uYlCIUtbmb1jS4BAzRaDY3gIsUj0h5fFAJj6VM6bU9j+S+ppXT65cOg=
+    secure: Ypv8J1NBulEHXrbszphwkWw7M7q4MWkjMeZZ0y5vTyEwLErYp6+VtfnZS8/oghyyPPsevmZcnx9GumqJQb+zS8ooEigo5xFa74Uowhqp7fhvrwujprhRE1vgOc7zUJBpeMsY3Z6QsnKa38pd61p6EKgynoNKobNWR4dwYshVsMq6/XLSEdThjrh8p3jcGh8ahMM38LaJM0eyk9NywWkrY+Y/oQ9/sZYj5eH2S2/TfLN3pEkn6y7K8iLcoF/JKXvKUq/GMCQziJsFwBHJj9JAinI04QCZhzEbeEUV8Bbq8wR2s/mwpG1xiUDdoDCh2K3hjPbr/YNE2RvVNX3gBPhgtAbc28Ij+Ru/83CYn07HYUQgq8+QqMsIjmZYcXDIzWX/i6wFlJfzKfhGKsgcPGBk5XNP3JoK6TZ5i962eJXxLYzvWbOAICoqo5nh7rjLhRMtPi0cPRx87UuNQW5OBqRgBHaOmdYRdGQQSGseAFaKEzQYazh8B8WBU/WsFyHNb86BpcahwExSpfap9PFTEQL+QOLeOgRw1mYKi9tlz2/YYPUQ3ZHBRbj70oq5LQW/c362D1JqKOH0SJLhHN7PQS7c30moNH08sY+iYeXV0izNIDvkufskaATuPpPFCV7VnMt/o297wh2h5EJUzLCPIizwcdQyasj/k1ULykfh9Z0ZKDY=
   app: tranquil-everglades-14225
   on:
     repo: eapostol/github-travis-heroku
     branch: main
   skip_cleanup: 'true'
-
