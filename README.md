@@ -153,7 +153,20 @@ You may need to install the Travis CLI with administrator permissions,
 whether you are a MAC user or a WIN user.
 
 #####Travis CLI on Mac
-You can follow the instructions from the link above, or if you have [Homebrew](https://brew.sh/) installed it may be easier to install Travis CLI with Homebrew `brew install travis`. 
+
+You can follow the instructions from the link above. Basically,
+
+`gem install travis --no-document --user-install`
+
+or (if you need admin permissions to install - you will know you need admin permissions if you get a permissions error while installing Travis)
+
+`sudo su ` then enter your mac password, then
+
+`gem install travis --no-document --user-install`
+
+then `exit` if there are no errors.
+
+ or if you have [Homebrew](https://brew.sh/) installed it may be easier to install Travis CLI with Homebrew `brew install travis`. 
 
 Alternatively follow the instructions at the link above ( [https://github.com/travis-ci/travis.rb#installation](https://github.com/travis-ci/travis.rb#installation) ) . Note you may need to be `sudo` or have administrative privileges.
 
@@ -183,6 +196,13 @@ For Windows Users:
 when using the Ruby Installer, if asked for checking 'Add Ruby 
 executables to your path' then CHECK THAT OPTION. in fact, check all
 the options (Install TCL/TK Support and associate .rb and .rbw files with the the ruby install)
+
+Then you can try `gem install travis` ; this installation step should be good, and if not, ensure that you are logged inan
+_administrator_ for your machine, and additionally _launch your terminal or git bash
+shell_ as an administrator.
+
+additional sources:
+* https://stackify.com/install-ruby-on-windows-everything-you-need-to-get-going/
 
 
 
@@ -297,44 +317,28 @@ Ensure that you have created a github token associated with your account. Follow
 1. Return to your main or master branch for your repository if you are not there already.
 2. Confirm you are logged into Heroku with `heroku login`
 3. Now user the travis CLI to login into travis using `travis login --com --github-token {token key here}` (note it used to be `travis login --org`). You now require a github token to login with.
-4. After you have logged in with travis, type `travis setup heroku` (or `travis setup heroku --force` if you wish to update the sample .travis.yml file that is part of the sample repo)
-5. go back to your develop branch, make a change, commit and push that change.
-6. if you cannot merge your branch's changes directly, use the pull request process to accept your change to develop.
-7. 
+4. After you have logged in with travis, type `travis setup heroku` (or `travis setup heroku --force` if you wish to update the sample .travis.yml file that is part of the sample repo and replace it with updated settings)
+5. If you have protected your main/mater branch, go back to your develop branch, make a change, commit and push that change. Otherwise make a code change that will by default be successful to test (i.e. add a comment in code, add, commit and push your change to main/master)
+6. If you cannot merge your branch's changes directly, use the pull request process to do code reviews and accept your change to your develop branch. 
+7. Also note the changes to the Gihub Pull Request process if you need to merge your develop branch into main/master/. You may see that Travis is enabled to generate a build and run tests as it is being approved during a pull request.
+
+
+8. 
 
 
 
 
 
 
-The results should look similar to the image below.
-
-![Screenshot_2019-05-12 -9.36.28-PM.png](images/Screenshot_2019-05-12%20-9.36.28-PM.png)
 
 
 
 
-* Mac Users -
-
-`gem install travis --no-document --user-install`
-
-or (if you need admin access)
-
-`sudo su ` then enter your mac password, then
-
-`gem install travis --no-document --user-install`
-
-then `exit` if there are no errors.
-
-
-* Windows Users -
-
-`gem install travis` should be good, as long as you are logged inan
-_administrator_ for your machine, and perhaps your terminal or git bash
-shell.
 
 
 
-additional sources:
-* https://stackify.com/install-ruby-on-windows-everything-you-need-to-get-going/
+
+
+
+
 
